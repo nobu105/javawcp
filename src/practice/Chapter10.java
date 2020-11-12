@@ -15,8 +15,25 @@ public class Chapter10 {
 			System.out.println("IllegalArgumentExceptionが発生しました");
 			e.printStackTrace();
 		}
+		
+		try {
+			Chapter10.throwSQLException();
+		} catch (SQLException e) {
+			System.out.println("SQLExceptionが発生しました");
+			
+			e.printStackTrace();
+		} finally {
+			System.out.println("throwSQLExceptionの読み出し終了");
+		}
 			
 		System.out.println("mainメソッド終了");
+	}
+	
+	public static void validIndex(int[] array, int index) {
+		if (array.length <= index) {
+			throw new IllegalArgumentException(index + " はサイズの範囲外です");
+		}
+		System.out.println("インデックス　" + " の要素は " + array[index] + " です");
 	}
 		
 	public static void throwSQLException() throws SQLException {
